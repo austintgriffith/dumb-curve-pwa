@@ -10,11 +10,12 @@ self.addEventListener("message", event => {
   console.log(event?.data);
 });
 
-self.addEventListener("push", event => {
-  // const data = JSON.parse(event?.data?.text() || "{}");
+self.addEventListener("push", async event => {
+  const data = JSON.parse(event?.data?.text() || "{}");
+  console.log("The data is", data);
   event?.waitUntil(
-    self.registration.showNotification("Test Notification", {
-      body: event?.data?.text(),
+    self.registration.showNotification(data.title, {
+      body: data.body,
       icon: "/logo.svg",
     }),
   );
