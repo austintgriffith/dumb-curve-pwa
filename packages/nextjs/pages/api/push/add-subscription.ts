@@ -1,8 +1,7 @@
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import { NextApiRequest, NextApiResponse } from "next";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import webpush, { PushSubscription } from "web-push";
 
 type Data = {
@@ -13,8 +12,7 @@ const PUBLIC_KEY_VAPID = process.env.PUBLIC_KEY ?? "";
 const PRIVATE_KEY_VAPID = process.env.PRIVATE_KEY ?? "";
 webpush.setVapidDetails("mailto:shivbhonde04@gmail.com", PUBLIC_KEY_VAPID, PRIVATE_KEY_VAPID);
 // db.json file path
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const file = join(__dirname, "..", "..", "..", "db.json");
+const file = join(process.cwd(), "db.json");
 const adapter = new JSONFile<Data>(file);
 const defaultData = { subscriptions: [] };
 
