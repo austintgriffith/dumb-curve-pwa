@@ -15,7 +15,9 @@ export const PWANotificationHinter = () => {
           setIsLoading(true);
           await subscribe();
         } catch (e) {
+          alert(`Error happend while subscribing`);
           console.log("Error happend:", e);
+          setIsLoading(false);
         }
         setIsLoading(false);
       }}
