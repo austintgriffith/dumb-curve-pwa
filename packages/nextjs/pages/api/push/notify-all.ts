@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const topics = decodeEventLog({
-      abi: parseAbi(["event GreetingChanged(address indexed, string, bool, uint256)"]),
+      abi: parseAbi(["event GreetingChange(address indexed, string, bool, uint256)"]),
       data: req.body.logs[0].data,
       topics: req.body.logs[0].topics,
     });
