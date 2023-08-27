@@ -21,14 +21,15 @@ const registerServiceWorker = async () => {
 export const subscribe = async () => {
   await unregisterServiceWorkers();
   try {
-    // Service worker is already registered by next-pwa
+    await registerServiceWorker();
+    const swRegistration = await navigator.serviceWorker.getRegistration();
     const premissionResult = await window?.Notification.requestPermission();
     if (premissionResult === "denied") alert("Premisson is denied :(");
-    const swRegistration = await registerServiceWorker();
     if (!swRegistration) {
       alert("No Service worker found");
       throw new Error("Service worker not registered");
     }
+    await navigator.serviceWorker.ready;
 
     const options = {
       applicationServerKey: process.env.NEXT_PUBLIC_PRIVATE_KEY_VAPID ?? "",
