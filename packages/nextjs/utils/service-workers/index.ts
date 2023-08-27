@@ -9,13 +9,26 @@ export const notificationsSupported = () => {
   return "Notification" in window && "serviceWorker" in navigator && "PushManager" in window;
 };
 
+export const unregisterServiceWorkers = async () => {
+  const registrations = await navigator.serviceWorker.getRegistrations();
+  await Promise.all(registrations.map(r => r.unregister()));
+};
+
+const registerServiceWorker = async () => {
+  return navigator.serviceWorker.register("/sw.js");
+};
+
 export const subscribe = async () => {
+  await unregisterServiceWorkers();
   try {
     // Service worker is already registered by next-pwa
     const premissionResult = await window?.Notification.requestPermission();
     if (premissionResult === "denied") alert("Premisson is denied :(");
-    const swRegistration = await navigator.serviceWorker.getRegistration();
-    if (!swRegistration) throw new Error("Service worker not registered");
+    const swRegistration = await registerServiceWorker();
+    if (!swRegistration) {
+      alert("No Service worker found");
+      throw new Error("Service worker not registered");
+    }
 
     const options = {
       applicationServerKey: process.env.NEXT_PUBLIC_PRIVATE_KEY_VAPID ?? "",
