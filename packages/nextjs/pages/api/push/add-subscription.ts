@@ -7,6 +7,9 @@ const PRIVATE_KEY_VAPID = process.env.PRIVATE_KEY_VAPID ?? "";
 webpush.setVapidDetails("mailto:shivbhonde04@gmail.com", PUBLIC_KEY_VAPID, PRIVATE_KEY_VAPID);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== "POST") {
+    res.status(405).json({ error: "Method not allowed" });
+  }
   if (!req.body || !req.body.endpoint) {
     // Not a valid subscription.
     res.status(400);
