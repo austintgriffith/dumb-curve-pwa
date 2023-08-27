@@ -6,13 +6,17 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
   try {
     const subscriptions = await getAllSubsriptionsFromDb();
 
-    subscriptions?.forEach(s => {
-      const payload = JSON.stringify({
-        title: "Greetings changed!",
-        body: "greetings has been changed!",
-      });
-      webpush.sendNotification(s, payload);
-    });
+    if (subscriptions && subscriptions.length > 0) {
+      await Promise.all(
+        subscriptions.map(s => {
+          const payload = JSON.stringify({
+            title: "Greetings changed!",
+            body: "greetings has been changed!",
+          });
+          return webpush.sendNotification(s, payload);
+        }),
+      );
+    }
 
     res.status(200).json({ message: `${subscriptions?.length ?? 0} messages sent!` });
   } catch (e) {
