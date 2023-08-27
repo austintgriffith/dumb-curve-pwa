@@ -1,27 +1,10 @@
-import { Low } from "lowdb";
-import { JSONFile } from "lowdb/node";
 import { NextApiRequest, NextApiResponse } from "next";
-import { join } from "node:path";
 import webpush, { PushSubscription } from "web-push";
+import { saveSubscriptionToDb } from "~~/database/firebase/utils";
 
-type Data = {
-  subscriptions: PushSubscription[];
-};
-
-const PUBLIC_KEY_VAPID = process.env.PUBLIC_KEY ?? "";
-const PRIVATE_KEY_VAPID = process.env.PRIVATE_KEY ?? "";
+const PUBLIC_KEY_VAPID = process.env.PUBLIC_KEY_VAPID ?? "";
+const PRIVATE_KEY_VAPID = process.env.PRIVATE_KEY_VAPID ?? "";
 webpush.setVapidDetails("mailto:shivbhonde04@gmail.com", PUBLIC_KEY_VAPID, PRIVATE_KEY_VAPID);
-// db.json file path
-const file = join(process.cwd(), "db.json");
-const adapter = new JSONFile<Data>(file);
-const defaultData = { subscriptions: [] };
-
-export const saveSubscriptionToDb = async (subscription: PushSubscription) => {
-  const db = new Low<Data>(adapter, defaultData);
-  db.data.subscriptions.push(subscription);
-  await db.write();
-  return;
-};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!req.body || !req.body.endpoint) {
