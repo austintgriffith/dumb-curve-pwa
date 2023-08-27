@@ -15,3 +15,5 @@ WIP: Playing with PWA
 - [ ] handle bugs on ios safari
 
 - [ ] restrict the app to mobile only
+
+- [ ] write the docs for configuring env's
