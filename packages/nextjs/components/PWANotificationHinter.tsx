@@ -8,7 +8,7 @@ export const PWANotificationHinter = () => {
 
   return isClient ? (
     <button
-      className="btn btn-primary"
+      className="btn btn-secondary"
       disabled={!notificationsSupported()}
       onClick={async () => {
         try {
