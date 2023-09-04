@@ -5,124 +5,63 @@ const contracts = {
       name: "gnosis",
       contracts: {
         YourContract: {
-          address: "0x21F91a6f0D61C1aDe0316c400F393dee0ed6E4B5",
+          address: "0x27e7857D1a23a3aC5dE8C6443Dc06656291E224c",
           abi: [
+            {
+              inputs: [],
+              name: "DEN",
+              outputs: [
+                {
+                  internalType: "uint8",
+                  name: "",
+                  type: "uint8",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [],
+              name: "NUM",
+              outputs: [
+                {
+                  internalType: "uint8",
+                  name: "",
+                  type: "uint8",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
             {
               inputs: [
                 {
                   internalType: "address",
-                  name: "_owner",
+                  name: "",
                   type: "address",
                 },
               ],
-              stateMutability: "nonpayable",
-              type: "constructor",
-            },
-            {
-              anonymous: false,
-              inputs: [
+              name: "balanceOf",
+              outputs: [
                 {
-                  indexed: true,
-                  internalType: "address",
-                  name: "greetingSetter",
-                  type: "address",
-                },
-                {
-                  indexed: false,
-                  internalType: "string",
-                  name: "newGreeting",
-                  type: "string",
-                },
-                {
-                  indexed: false,
-                  internalType: "bool",
-                  name: "premium",
-                  type: "bool",
-                },
-                {
-                  indexed: false,
                   internalType: "uint256",
-                  name: "value",
+                  name: "",
                   type: "uint256",
                 },
               ],
-              name: "GreetingChange",
-              type: "event",
-            },
-            {
-              inputs: [],
-              name: "greeting",
-              outputs: [
-                {
-                  internalType: "string",
-                  name: "",
-                  type: "string",
-                },
-              ],
               stateMutability: "view",
               type: "function",
             },
             {
               inputs: [],
-              name: "owner",
-              outputs: [
-                {
-                  internalType: "address",
-                  name: "",
-                  type: "address",
-                },
-              ],
-              stateMutability: "view",
-              type: "function",
-            },
-            {
-              inputs: [],
-              name: "premium",
-              outputs: [
-                {
-                  internalType: "bool",
-                  name: "",
-                  type: "bool",
-                },
-              ],
-              stateMutability: "view",
-              type: "function",
-            },
-            {
-              inputs: [
-                {
-                  internalType: "string",
-                  name: "_newGreeting",
-                  type: "string",
-                },
-              ],
-              name: "setGreeting",
+              name: "buy",
               outputs: [],
               stateMutability: "payable",
               type: "function",
             },
             {
               inputs: [],
-              name: "totalCounter",
-              outputs: [
-                {
-                  internalType: "uint256",
-                  name: "",
-                  type: "uint256",
-                },
-              ],
-              stateMutability: "view",
-              type: "function",
-            },
-            {
-              inputs: [
-                {
-                  internalType: "address",
-                  name: "",
-                  type: "address",
-                },
-              ],
-              name: "userGreetingCounter",
+              name: "price",
               outputs: [
                 {
                   internalType: "uint256",
@@ -135,7 +74,7 @@ const contracts = {
             },
             {
               inputs: [],
-              name: "withdraw",
+              name: "sell",
               outputs: [],
               stateMutability: "nonpayable",
               type: "function",

@@ -11,11 +11,11 @@ export type ScaffoldConfig = {
 
 const scaffoldConfig = {
   // The network where your DApp lives in
-  targetNetwork: chains.hardhat,
+  targetNetwork: chains.gnosis,
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect on the local network
-  pollingInterval: 5000,
+  pollingInterval: 2500,
 
   // This is ours Alchemy's default API key.
   // You can get your own at https://dashboard.alchemyapi.io
