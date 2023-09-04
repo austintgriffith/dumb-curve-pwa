@@ -33,7 +33,7 @@ export const Footer = () => {
           <div className="flex justify-center items-center gap-2 text-sm w-full">
             <div className="text-center">
               <a
-                href="https://github.com/scaffold-eth/se-2"
+                href="https://github.com/austintgriffith/dumb-curve-pwa"
                 target="_blank"
                 rel="noreferrer"
                 className="underline underline-offset-2"
@@ -56,16 +56,6 @@ export const Footer = () => {
               </p>
             </div>
             <span>·</span>
-            <div className="text-center">
-              <a
-                href="https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA"
-                target="_blank"
-                rel="noreferrer"
-                className="underline underline-offset-2"
-              >
-                Support
-              </a>
-            </div>
           </div>
         </ul>
       </div>

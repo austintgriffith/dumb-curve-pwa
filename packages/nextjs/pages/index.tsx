@@ -46,7 +46,7 @@ const Home: NextPage = () => {
       <MetaHeader />
       <div className="flex items-center flex-col flex-grow pt-10">
         <div className="px-5 flex flex-col items-center">
-          <span className="block text-2xl mb-2">dumbcurve</span>
+          <span className="block text-2xl mb-2">contract:</span>
           <div className="flex flex-row">
             <div>
               <Address address={yourContractData?.address} />

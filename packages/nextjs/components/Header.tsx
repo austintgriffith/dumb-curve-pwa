@@ -34,25 +34,7 @@ export const Header = () => {
     useCallback(() => setIsDrawerOpen(false), []),
   );
 
-  const navLinks = (
-    <>
-      <li>
-        <NavLink href="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink href="/debug">
-          <BugAntIcon className="h-4 w-4" />
-          Debug Contracts
-        </NavLink>
-      </li>
-      <li>
-        <NavLink href="/example-ui">
-          <SparklesIcon className="h-4 w-4" />
-          Example UI
-        </NavLink>
-      </li>
-    </>
-  );
+  const navLinks = <></>;
 
   return (
     <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
@@ -80,12 +62,10 @@ export const Header = () => {
           )}
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6">
-          <div className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
-          </div>
+          <div className="flex relative w-10 h-10 text-4xl">🤡</div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-eth</span>
-            <span className="text-xs">Ethereum dev stack</span>
+            <span className="font-bold leading-tight">Dumb Curve</span>
+            <span className="text-xs">a stupid bonding curve pwa example on gnosis</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>
